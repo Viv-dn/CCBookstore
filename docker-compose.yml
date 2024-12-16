@@ -11,7 +11,7 @@ services:
       - sqlserver_data:/var/opt/mssql # Persist database data in a volume
 
   billingserviceapi: #Billing
-    image: vivng/bookstore:v20241216113822
+    image: vivng/bookstore:v20241216140449
     ports:
       - "8086:8086" # Expose your API on port 8080
     depends_on:
