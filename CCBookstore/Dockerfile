@@ -7,10 +7,10 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["CCBookstore.csproj", "."]
-RUN dotnet restore "./CCBookstore.csproj"
+COPY ["CCBookstore/CCBookstore.csproj", "./CCBookstore/"]
+RUN dotnet restore "CCBookstore/CCBookstore.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/CCBookstore"
 RUN dotnet build "./CCBookstore.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
