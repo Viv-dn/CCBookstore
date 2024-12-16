@@ -1,0 +1,24 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest # SQL Server image
+    container_name: Billingsqlserver
+    ports:
+      - "1433:1433" # Expose SQL Server's port
+    environment:
+      SA_PASSWORD: "VivianPass.123" # Set the SA password
+      ACCEPT_EULA: "Y" # Accept the EULA
+    volumes:
+      - sqlserver_data:/var/opt/mssql # Persist database data in a volume
+
+  bookingserviceapi:
+    image: Bookstore/billingService
+    ports:
+      - "8086:8086" # Expose your API on port 8080
+    depends_on:
+      - sqlserver # Ensure SQL Server starts first
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=BillingDB;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;" # Connection string to SQL Server
+      ASPNETCORE_URLS: "http://+:8086"
+
+volumes:
+  sqlserver_data: # Define the volume to persist SQL Server data

@@ -1,0 +1,6 @@
+@CCBookstore_HostAddress = http://localhost:5110
+
+GET {{CCBookstore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
