@@ -43,6 +43,17 @@ services:
       ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=OrderDB;User Id=sa;Password=SamerPass.123;TrustServerCertificate=True;"  # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8087"
 
+  userserviceapi:
+    image: gnegash/userservice:v20241216133917
+    container_name: UserService
+    ports:
+      - "8088:8088" # Expose your API on port 8080
+    depends_on:
+      - sqlserver # Ensure SQL Server starts first
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=MicroService;User Id=sa;Password=ByeBye.123;TrustServerCertificate=True;" # Connection string to SQL Server
+      ASPNETCORE_URLS: "http://+:8088"
+
   api-gateway:
     image: vivng/api-gateway
     container_name: api-gateway
@@ -52,6 +63,7 @@ services:
       - billingserviceapi
       - bookserviceapi
       - orderserviceapi
+      - userserviceapi
     environment:
       ASPNETCORE_URLS: "http://+:8000"
 
