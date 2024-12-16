@@ -38,7 +38,6 @@ namespace CCBookstore.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateBillingAsync(Billing billing)
         {
-            //få ett svar tillbaka för löskoppling
             await _repo.CreateBillingAsync(billing);
             //NotifyBillingAdded(billing);
             _service.NotifyBillingAdded(billing);
