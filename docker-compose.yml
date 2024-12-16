@@ -12,6 +12,7 @@ services:
 
   billingserviceapi: #Billing
     image: vivng/bookstore:v20241216140449
+    container_name: BillingService
     ports:
       - "8086:8086" # Expose your API on port 8080
     depends_on:
@@ -19,6 +20,40 @@ services:
     environment:
       ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=BillingDB;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;" # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8086"
+
+  bookserviceapi:
+    image: despac2/bookservice:v20241216140343
+    container_name: BookService
+    ports:
+      - "8080:8080" # Expose your API on port 8080
+    depends_on:
+      - sqlserver # Ensure SQL Server starts first
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=CCBookstoreDB;User Id=sa;Password=SuperSafe.123;TrustServerCertificate=True;" # Connection string to SQL Server
+      ASPNETCORE_URLS: "http://+:8080"
+
+  orderserviceapi:
+    image: samerzaid/orderservice:v20241216140908
+    container_name: OrderService
+    ports:
+      - "8087:8087"  # Expose your API on port 8080
+    depends_on:
+      - sqlserver  # Ensure SQL Server starts first
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=OrderDB;User Id=sa;Password=SamerPass.123;TrustServerCertificate=True;"  # Connection string to SQL Server
+      ASPNETCORE_URLS: "http://+:8087"
+
+  api-gateway:
+    image: vivng/api-gateway
+    container_name: api-gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - billingserviceapi
+      - bookserviceapi
+      - orderserviceapi
+    environment:
+      ASPNETCORE_URLS: "http://+:8000"
 
 volumes:
   sqlserver_data: # Define the volume to persist SQL Server data
