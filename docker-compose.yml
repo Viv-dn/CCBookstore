@@ -11,7 +11,7 @@ services:
       - sqlserver_data:/var/opt/mssql # Persist database data in a volume
 
   billingserviceapi: #Billing
-    image: vivng/bookstore:v20241216140449
+    image: vivng/bookstore:v20241218084247
     container_name: BillingService
     ports:
       - "8086:8086" # Expose your API on port 8080
@@ -47,7 +47,7 @@ services:
     pull_policy: always
 
   userserviceapi:
-    image: gnegash/userservice:v20241216133917
+    image: gnegash/userservice
     container_name: UserService
     ports:
       - "8088:8088" # Expose your API on port 8080
@@ -59,7 +59,7 @@ services:
     pull_policy: always
 
   api-gateway:
-    image: vivng/bookstore:v20241216140449
+    image: vivng/bookstore
     container_name: api-gateway
     ports:
       - "8000:8000"
