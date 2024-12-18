@@ -15,17 +15,17 @@
       "UpstreamHttpMethod": ["Get", "Post"]
     },
     {
-      "DownstreamPathTemplate": "/api/orders",
+      "DownstreamPathTemplate": "/api/Orders",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "OrderService", "Port": 8087 }],
-      "UpstreamPathTemplate": "/gateway/orders",
+      "UpstreamPathTemplate": "/gateway/Orders",
       "UpstreamHttpMethod": ["Get", "Post"]
     },
     {
-      "DownstreamPathTemplate": "/api/users",
+      "DownstreamPathTemplate": "/api/user",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "UserService", "Port": 8088 }],
-      "UpstreamPathTemplate": "/gateway/users",
+      "UpstreamPathTemplate": "/gateway/user",
       "UpstreamHttpMethod": ["Get", "Post"]
     }
   ],
