@@ -1,31 +1,31 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/billing/{everything}",
+      "DownstreamPathTemplate": "/api/billing",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{ "Host": "BillingService", "Port": 8086 }],
-      "UpstreamPathTemplate": "/billing/{everything}",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 8086 }],
+      "UpstreamPathTemplate": "/gateway/billing",
       "UpstreamHttpMethod": ["Get", "Post"]
     },
     {
-      "DownstreamPathTemplate": "/api/books/{everything}",
+      "DownstreamPathTemplate": "/api/books",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "BookService", "Port": 8080 }],
-      "UpstreamPathTemplate": "/books/{everything}",
+      "UpstreamPathTemplate": "/gateway/books",
       "UpstreamHttpMethod": ["Get", "Post"]
     },
     {
-      "DownstreamPathTemplate": "/api/orders/{everything}",
+      "DownstreamPathTemplate": "/api/orders",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "OrderService", "Port": 8087 }],
-      "UpstreamPathTemplate": "/orders/{everything}",
+      "UpstreamPathTemplate": "/gateway//orders",
       "UpstreamHttpMethod": ["Get", "Post"]
     },
     {
-      "DownstreamPathTemplate": "/api/users/{everything}",
+      "DownstreamPathTemplate": "/api/users",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [{ "Host": "UserService", "Port": 8088 }],
-      "UpstreamPathTemplate": "/users/{everything}",
+      "UpstreamPathTemplate": "/gateway//users",
       "UpstreamHttpMethod": ["Get", "Post"]
     }
   ],
