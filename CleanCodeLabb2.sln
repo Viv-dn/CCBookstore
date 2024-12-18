@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCBookstore", "CCBookstore\CCBookstore.csproj", "{E03735D8-C20E-4218-A14B-11EFDF270229}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1D0AF3E1-27E9-488B-9B0F-546AAF3D2B03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E03735D8-C20E-4218-A14B-11EFDF270229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E03735D8-C20E-4218-A14B-11EFDF270229}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E03735D8-C20E-4218-A14B-11EFDF270229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0AF3E1-27E9-488B-9B0F-546AAF3D2B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0AF3E1-27E9-488B-9B0F-546AAF3D2B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0AF3E1-27E9-488B-9B0F-546AAF3D2B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0AF3E1-27E9-488B-9B0F-546AAF3D2B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

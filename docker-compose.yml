@@ -47,7 +47,7 @@ services:
     pull_policy: always
 
   userserviceapi:
-    image: gnegash/userservice
+    image: gnegash/userservice:v20241216133917
     container_name: UserService
     ports:
       - "8088:8088" # Expose your API on port 8080
@@ -59,7 +59,7 @@ services:
     pull_policy: always
 
   api-gateway:
-    image: vivng/bookstore
+    image: vivng/api-gateway
     container_name: api-gateway
     ports:
       - "8000:8000"
@@ -69,7 +69,7 @@ services:
       - orderserviceapi
       - userserviceapi
     environment:
-      ASPNETCORE_URLS: "http://+:8086"
+      ASPNETCORE_URLS: "http://+:8000"
     pull_policy: always
 
 volumes:
