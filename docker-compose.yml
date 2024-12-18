@@ -20,6 +20,7 @@ services:
     environment:
       ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=BillingDB;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;" # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8086"
+    pull_policy: always
 
   bookserviceapi:
     image: despac2/bookservice:v20241216140343
@@ -29,8 +30,9 @@ services:
     depends_on:
       - sqlserver # Ensure SQL Server starts first
     environment:
-      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=CCBookstoreDB;User Id=sa;Password=SuperSafe.123;TrustServerCertificate=True;" # Connection string to SQL Server
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=CCBookstoreDB;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;" # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8080"
+    pull_policy: always
 
   orderserviceapi:
     image: samerzaid/orderservice:v20241216140908
@@ -40,8 +42,9 @@ services:
     depends_on:
       - sqlserver  # Ensure SQL Server starts first
     environment:
-      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=OrderDB;User Id=sa;Password=SamerPass.123;TrustServerCertificate=True;"  # Connection string to SQL Server
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=OrderDB;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;"  # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8087"
+    pull_policy: always
 
   userserviceapi:
     image: gnegash/userservice:v20241216133917
@@ -51,11 +54,12 @@ services:
     depends_on:
       - sqlserver # Ensure SQL Server starts first
     environment:
-      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=MicroService;User Id=sa;Password=ByeBye.123;TrustServerCertificate=True;" # Connection string to SQL Server
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=MicroService;User Id=sa;Password=VivianPass.123;TrustServerCertificate=True;" # Connection string to SQL Server
       ASPNETCORE_URLS: "http://+:8088"
+    pull_policy: always
 
   api-gateway:
-    image: vivng/api-gateway
+    image: vivng/bookstore:v20241216140449
     container_name: api-gateway
     ports:
       - "8000:8000"
@@ -65,7 +69,8 @@ services:
       - orderserviceapi
       - userserviceapi
     environment:
-      ASPNETCORE_URLS: "http://+:8000"
+      ASPNETCORE_URLS: "http://+:8086"
+    pull_policy: always
 
 volumes:
   sqlserver_data: # Define the volume to persist SQL Server data
