@@ -1,0 +1,35 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/billing/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "BillingService", "Port": 8086 }],
+      "UpstreamPathTemplate": "/billing/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/books/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "BookService", "Port": 8080 }],
+      "UpstreamPathTemplate": "/books/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "OrderService", "Port": 8087 }],
+      "UpstreamPathTemplate": "/orders/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "UserService", "Port": 8088 }],
+      "UpstreamPathTemplate": "/users/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post"]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8000"
+  }
+}
